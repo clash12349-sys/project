@@ -29,6 +29,18 @@ plt.style.use("ggplot")
 
 df = pd.read_csv("sample_data/student_performance_dataset.csv")
 
+uploaded_file = st.file_uploader(
+    "Upload student performance dataset CSV",
+    type="csv"
+)
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.write(df.head())
+else:
+    st.warning("Please upload the CSV file.")
+    st.stop()
+
 print("Shape:", df.shape)
 
 df.head()
